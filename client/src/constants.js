@@ -1,4 +1,4 @@
-const backendApiUrl = "http://localhost:8080/api";
+const backendApiUrl = "https://e-library-vlh7.onrender.com/api";
 
 const routes = {
   AUTHOR: "author",
