@@ -3,15 +3,14 @@ import PropTypes from "prop-types";
 import Iconify from "../../../components/iconify";
 
 const AuthorForm = ({
-                      isUpdateForm,
-                      isModalOpen,
-                      handleCloseModal,
-                      author,
-                      setAuthor,
-                      handleAddAuthor,
-                      handleUpdateAuthor
-                    }) => {
-
+  isUpdateForm,
+  isModalOpen,
+  handleCloseModal,
+  author,
+  setAuthor,
+  handleAddAuthor,
+  handleUpdateAuthor
+}) => {
 
   const style = {
     position: 'absolute',
@@ -24,7 +23,6 @@ const AuthorForm = ({
     boxShadow: 16,
     p: 4,
   };
-
 
   return (
     <Modal
@@ -40,41 +38,61 @@ const AuthorForm = ({
           </Typography>
           <Stack spacing={3} paddingY={2}>
 
-            <TextField name="name" label="Author name" value={author.name} autoFocus required
-                       onChange={(e) => setAuthor({
-                         ...author,
-                         name: e.target.value,
-                         photoUrl: `https://avatars.dicebear.com/api/initials/${e.target.value.replace(" ", "+")}.svg`
-                       })}/>
-            <TextField name="description" label="Description" value={author.description} multiline
-                       rows={2}
-                       maxRows={4}
-                       onChange={(e) => setAuthor({...author, description: e.target.value})}
+            {/* Author Name */}
+            <TextField 
+              name="name" 
+              label="Author name" 
+              value={author.name || ""} 
+              autoFocus 
+              required
+              onChange={(e) => setAuthor({
+                ...author,
+                name: e.target.value,
+                // keep dicebear fallback if no custom photo provided
+                photoUrl: author.photoUrl || `https://avatars.dicebear.com/api/initials/${e.target.value.replace(" ", "+")}.svg`
+              })}
             />
 
-            <Button
-              size="large"
-              variant="outlined"
-              component="label"
-              color="info"
-            >
-              Upload photo
-              <input
-                type="file"
-                accept="image/jpeg, image/png"
-                hidden
-              />
-            </Button>
+            {/* Author Description */}
+            <TextField 
+              name="description" 
+              label="Description" 
+              value={author.description || ""} 
+              multiline
+              rows={2}
+              maxRows={4}
+              onChange={(e) => setAuthor({...author, description: e.target.value})}
+            />
+
+            {/* Author Photo URL */}
+            <TextField 
+              name="photoUrl" 
+              label="Photo URL" 
+              value={author.photoUrl || ""} 
+              onChange={(e) => setAuthor({...author, photoUrl: e.target.value})}
+              helperText="Enter an image URL or leave empty to use auto-generated avatar"
+            />
 
             <br/>
             <Box textAlign="center">
-              <Button size="large" variant="contained" onClick={isUpdateForm ? handleUpdateAuthor : handleAddAuthor}
-                      startIcon={<Iconify icon="bi:check-lg"/>} style={{marginRight: "12px"}}>
+              <Button 
+                size="large" 
+                variant="contained" 
+                onClick={isUpdateForm ? handleUpdateAuthor : handleAddAuthor}
+                startIcon={<Iconify icon="bi:check-lg"/>} 
+                style={{marginRight: "12px"}}
+              >
                 Submit
               </Button>
 
-              <Button size="large" color="inherit" variant="contained" onClick={handleCloseModal}
-                      startIcon={<Iconify icon="charm:cross"/>} style={{marginLeft: "12px"}}>
+              <Button 
+                size="large" 
+                color="inherit" 
+                variant="contained" 
+                onClick={handleCloseModal}
+                startIcon={<Iconify icon="charm:cross"/>} 
+                style={{marginLeft: "12px"}}
+              >
                 Cancel
               </Button>
             </Box>
@@ -95,4 +113,4 @@ AuthorForm.propTypes = {
   handleUpdateAuthor: PropTypes.func
 };
 
-export default AuthorForm
+export default AuthorForm;
