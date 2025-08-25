@@ -156,19 +156,13 @@ const BookForm = ({
                            onChange={(e) => setBook({...book, summary: e.target.value})}
                 />
 
-                <Button
-                  size="large"
-                  variant="outlined"
-                  component="label"
-                  color="info"
-                >
-                  Upload photo
-                  <input
-                    type="file"
-                    accept="image/jpeg, image/png"
-                    hidden
-                  />
-                </Button>
+                <TextField 
+                  name="photoUrl" 
+                  label="Photo URL" 
+                  value={book.photoUrl || ""} 
+                  onChange={(e) => setBook({...book, photoUrl: e.target.value})}
+                />
+
 
                 <br/>
                 <Box textAlign="center" paddingBottom={2}>
