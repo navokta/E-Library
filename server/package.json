@@ -10,11 +10,7 @@
     "mongodb"
   ],
   "authors": [
-    "Sandul Renuja",
-    "Abdullah Jasmine",
-    "Ravindu Wegiriya",
-    "Kaveesha Muthukuda",
-    "Induwara Pathirana"
+"Bhavy Sharma"
   ],
   "main": "index.js",
   "scripts": {
