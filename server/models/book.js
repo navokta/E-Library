@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const bookSchema = new mongoose.Schema({
   name: {
@@ -17,6 +17,12 @@ const bookSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: false
   },
+  publishYear: {               // ✅ New field
+    type: Number,
+    required: false,
+    min: 2000,
+    max: new Date().getFullYear()
+  },
   isAvailable: {
     type: Boolean,
     required: true
@@ -29,6 +35,6 @@ const bookSchema = new mongoose.Schema({
     type: String,
     required: false
   }
-})
+});
 
-module.exports = mongoose.model('Book', bookSchema)
+module.exports = mongoose.model('Book', bookSchema);

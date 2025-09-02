@@ -1,13 +1,14 @@
 import { Helmet } from "react-helmet-async";
-import { styled } from "@mui/material/styles";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Container, Typography } from "@mui/material";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../../../hooks/useAuth";
+import { styled } from "@mui/material/styles";
+import { Container, Typography, Box } from "@mui/material";
 
+import { useAuth } from "../../../hooks/useAuth";
 import Logo from "../../../components/logo";
 import { LoginForm } from "./index";
+
 
 // ----------------------------------------------------------------------
 
@@ -78,17 +79,28 @@ export default function LoginPage() {
 
         <Container maxWidth="sm">
           <StyledContent>
-            <Typography variant="h4" sx={{ color: "#666666", fontWeight: "600" }} textAlign="center" gutterBottom
-                        paddingBottom={0}>
-              Library System
-            </Typography>
-            <Typography variant="h3" textAlign="center" gutterBottom paddingBottom={3}>
-              Sign in
-            </Typography>
+  <Box
+    sx={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      mb: 2, // margin-bottom
+    }}
+  >
+    <img
+      src="./assets/logo-removebg-preview.svg"
+      alt="Library Logo"
+      style={{ width: "150px", height: "auto" }}
+    />
+  </Box>
 
-            <LoginForm loginUser={loginUser} />
+  <Typography variant="h3" textAlign="center" gutterBottom paddingBottom={3}>
+    Sign in
+  </Typography>
 
-          </StyledContent>
+  <LoginForm loginUser={loginUser} />
+</StyledContent>
+
         </Container>
       </StyledRoot>
     </>
