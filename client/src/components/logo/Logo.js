@@ -20,7 +20,7 @@ const Logo = forwardRef(({disabledLink = false, sx, ...other}, ref) => {
       }}
       {...other}
     >
-      <img src="./assets/transparent.png" alt="Logo" width="25%"/>
+      <img src="./assets/logo-removebg-preview.svg" alt="Logo" width="25%"/>
     </Box>
   );
 
